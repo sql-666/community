@@ -1,0 +1,58 @@
+{% extends "font/base.html" %}
+{% load static %}
+{% block css %}<link href="{% static	'css/product_d.css' %}" rel="stylesheet" type="text/css"/>{% endblock %}
+{% block title %}商品详情{% endblock %}
+
+{% block content %}
+    <div >
+    {% for item in imgs %}
+    <img src="{% static item.url %}" width="100%" class="img">
+    {% endfor %}
+    </div>
+
+<div class="wrap">
+    <div><p>{{ productD.title }}</p></div>
+
+    <div class="wrap-price">
+        <p id="price">￥{{ productD.price }}</p><p id="gray">/{{ productD.unit }}</p>
+    </div>
+    <div class="kucun">
+    <div class="item">
+        <p>库存:</p>
+        <p>{{ productD.inventory }}只</p>
+    </div>
+    <div class="item">
+        <p id="floor-price">起送价</p>
+        <p >￥{{ productD.start_price }}</p>
+    </div>
+        </div>
+    <div class="item">
+        <p id="contect">联系方式</p>
+        <p>{{ productD.phone }}</p>
+    </div>
+    <div class="item">
+        <p id="contect">自提地址</p>
+        <p>{{ productD.community.address }}</p>
+    </div>
+    <div class="note">
+        <p>商家说明</p>
+        <p>{{ productD.note }}</p>
+    </div>
+
+
+</div>
+
+<!--商品附图-->
+    {% if dets %}
+<div class="product-bt">
+    <p>商品详情图</p>
+</div>
+<div class="productD">
+    {% for item in dets %}
+        <img src="{% static item.url %}">
+    {% endfor %}
+</div>
+    {% endif %}
+
+
+{% endblock %}

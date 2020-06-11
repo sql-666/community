@@ -1,0 +1,61 @@
+{% extends "font/base.html" %}
+{% load static %}
+{% block css %}<link href="{% static	'css/edit_user_info.css'	%}" rel="stylesheet" type="text/css"/>{% endblock %}
+{% block title %}编辑用户信息{% endblock %}
+
+{% block content %}
+ <div class="head">
+    <div class="user-img">
+        <img src="{% static 'images/smile.jpg' %}" width="220" height="220">
+        <p>{{ user_info.name }}</p>
+    </div>
+</div>
+
+<div class="content">
+    <div class="item">
+        <p>姓名</p>
+        <input id="name" value={{ user_info.name }}>
+    </div>
+    <div class="wrap-name">
+        <div class="item" id="gender" now_gender = "{{ user_info.gender }}">
+            <p>性别</p>
+            <label style="width: 150px;display: flex;align-items: center;">
+                <input name="gender" type="radio" value="2" class="radio" />
+                <p>女</p>
+            </label>
+            <label style="width: 150px;display: flex;align-items: center;">
+                <input name="gender" type="radio" value="1" class="radio"/>
+                <p>男</p>
+            </label>
+
+        </div>
+        <div class="item">
+            <p>年龄</p>
+            <input id="age" value={{ user_info.age }}>
+        </div>
+    </div>
+    <div class="item">
+        <p>职业</p>
+        <input id="occupation" value={{ user_info.occupation }}>
+    </div>
+    <div class="item">
+        <p>特长</p>
+        <input id="specialty" value={{ user_info.specialty }}>
+    </div>
+    <div class="note">
+        <p>说明</p>
+        <textarea id="content_note">{{ user_info.content }}</textarea>
+    </div>
+
+</div>
+
+<div class="wrap-btn">
+    <div class="btn" id="edit-user-info-btn">
+        <p style="line-height: 50px;color: white">提交</p>
+    </div>
+
+</div>
+
+{% endblock %}
+
+{% block js %}<script type="text/javascript" src="{% static	'js/edit_user_info.js'	%}"></script>{%endblock %}

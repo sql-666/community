@@ -1,0 +1,126 @@
+{% extends "font/base.html" %}
+{% load static %}
+{% block css %}
+    <link href="{% static	'css/respects_detail.css' %}" rel="stylesheet" type="text/css"/>{% endblock %}
+{% block title %}老人详情{% endblock %}
+
+{% block content %}
+    <div class="head-bg">
+        <img src="{% static respectsD.avatar ' %}" height="500" width="100%">
+    </div>
+
+    <div class="wrap">
+        <p class="hide">{{ respectsD.myid }}</p>
+        <div class="info">
+            <div class="respect-name">
+                <div class="bt-item">
+                    <p id="respect-name">姓名:</p>
+                    <p>{{ respectsD.name }}</p>
+                </div>
+                <div style="display: flex">
+                    <div class="bt-item">
+                        <p>性别</p>
+                        {% if respectsD.gender == 1 %}
+                            <p>男</p>
+                        {% elif respectsD.gender == 2 %}
+                            <p>女</p>
+                        {% else %}
+                            <p>未知</p>
+                        {% endif %}
+                    </div>
+                    <div class="bt-item">
+                        <p>年龄</p>
+                        <p>{{ respectsD.age }}</p>
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="situation">
+                <div class="bt-item">
+                    <p>居住情况</p>
+                    <p>{{ respectsD.live_situation }}</p>
+                </div>
+                <div class="bt-item">
+                    <p>身体状况</p>
+                    <p>{{ respectsD.health_situation }}</p>
+                </div>
+                <div class="bt-item">
+                    <p>详细住址</p>
+                    <p>{{ respectsD.address }}</p>
+                </div>
+                <div class="bt-item">
+                    <p>兴趣爱好</p>
+                    <p>{{ respectsD.hobby }}</p>
+                </div>
+                <div class="bt-item">
+                    <p>联系人</p>
+{#                    <p>{{ respectsD.families.name }}</p>#}
+                    <p>梁先生</p>
+                </div>
+                <div class="bt-item">
+                    <p>添加人</p>
+                    <p>{{ respectsD.publish_person.name }}</p>
+                </div>
+            </div>
+            <div class="note">
+                <p>说明</p>
+                <div style="width: 100%;height: 300px;border: 1px solid #cccccc"><p>{{ respectsD.note }}</p></div>
+            </div>
+
+        </div>
+
+    </div>
+    <div class="wrap-btn">
+        <p class="hide">{{ is_prove }}</p>
+        <p>已有{{ confirm_num }}个人证明属实</p>
+{#        <p>已有193个人证明属实</p>#}
+        <div class="prove-btn" style="background-color: darkorange;">
+            <p style="line-height: 80px">我也帮证实</p>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block script %}
+    <script>
+     var is_prove = $(".wrap-btn").children("p.hide").text()
+    $(function () {
+
+
+        if (is_prove=="True"){
+            $(".prove-btn").children("p").text("您已帮证实")
+            $(".prove-btn").css("background-color", '#8a8a8a')
+        }
+    })
+        $(".prove-btn").on('click', function () {
+            if (is_prove=="True"){
+                alert("您已帮证实,请勿重复操作！")
+                return
+            }
+            var data = {
+                "respect_id": $(".wrap").children("p.hide").text()
+            }
+            $.ajax({
+                type: 'POST',
+                url: confirm,
+                data: JSON.stringify(data),
+                dataType: "json",
+                contentType: "application/json;charset=utf-8",
+                success: function (res) {
+                    if (res.code == "200") {//根据返回值进行跳转
+{#                        $(".prove-btn").children("p").text("您已帮证实")#}
+{#                        $(".prove-btn").children("p").attr("background-color", '#8a8a8a')#}
+                        alert("感谢您，已证实成功！")
+                        window.location.href=respects_detail+"?respect_id="+data["respect_id"];
+
+                    } else {
+                        alert("证实失败！请稍后再试！")
+                    }
+                }
+            });
+        })
+
+    </script>
+
+{% endblock %}

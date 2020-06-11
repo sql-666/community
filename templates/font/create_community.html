@@ -1,0 +1,82 @@
+{% extends "font/base.html" %}
+{% load static %}
+{% block meta %}
+    <meta name="viewport" content="width=device-width, initial-scale=1">{% endblock %}
+{% block css %}
+    <link href="{% static	'css/create_community.css' %}" rel="stylesheet" type="text/css"/>{% endblock %}
+{% block title %}创建社区{% endblock %}
+{% block bgc %}
+    style='background-image: url("{% static 'images/bg2.jpg' %}");background-size:cover;'
+{%endblock %}
+{% block content %}
+
+
+    <div class="wrap">
+        <div>
+            <h4>注意:</h4>
+            <h5>1.每人只能创建一个社区</h5>
+            <h5>2.社区不可注销、不可转让</h5>
+            <h5>3.创建人自动成为管理员、拥有全部的权限</h5>
+            <h5>4.社区创建完成后，会有一个社区码，社区成员可凭码加入社区</h5>
+
+        </div>
+        <div class="col-lg-6">
+            <div class="input-group">
+      <span class="input-group-btn">
+        <button class="btn btn-default" type="button">社区名</button>
+      </span>
+                <input type="text" class="form-control" placeholder="10个字以内" id="community_name">
+            </div><!-- /input-group -->
+        </div><!-- /.col-lg-6 -->
+                <div class="col-lg-6">
+            <div class="input-group">
+      <span class="input-group-btn">
+        <button class="btn btn-default" type="button">省市</button>
+      </span>
+                <input type="text" class="form-control" placeholder="省市" id="province">
+            </div><!-- /input-group -->
+        </div><!-- /.col-lg-6 -->
+                <div class="col-lg-6">
+            <div class="input-group">
+      <span class="input-group-btn">
+        <button class="btn btn-default" type="button">地址</button>
+      </span>
+                <input type="text" class="form-control" placeholder="详细地址" id="address">
+            </div><!-- /input-group -->
+        </div><!-- /.col-lg-6 -->
+        <div class="col-lg-6">
+            <div class="input-group">
+      <span class="input-group-btn">
+        <button class="btn btn-default" type="button">账号</button>
+      </span>
+                <input type="text" class="form-control" placeholder="86+" id="account">
+            </div><!-- /input-group -->
+        </div><!-- /.col-lg-6 -->
+
+
+        <div class="col-lg-6">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="4位数字" id="code">
+                <span class="input-group-btn">
+        <button class="btn btn-default" type="button">验证码</button>
+      </span>
+            </div><!-- /input-group -->
+        </div><!-- /.col-lg-6 -->
+        <div class="alert alert-danger" id="warning" style="width: 90%; margin-left: 5%; display: none">
+            <a href="#" class="close" data-dismiss="alert">
+                &times;
+            </a>
+            <strong>错误！</strong>
+            <span>网络连接错误！</span>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="button" class="btn btn-default" id="create-btn">创建</button>
+            </div>
+        </div>
+    </div><!-- /.row -->
+
+{% endblock %}
+{% block js %}
+    <script type="text/javascript" src="{% static	'js/create_community.js' %}"></script>{% endblock %}

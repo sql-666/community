@@ -1,0 +1,57 @@
+.item{
+    display: flex;
+    margin: 50px 0;
+}
+.head{
+    background-color: #eaeaea;
+    display: flex;
+    align-items:  center;
+    padding: 20px 0;
+    flex-direction: column;
+}
+
+.head img{
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+}
+
+.item input{
+    width: 75%;
+    border:none;
+    border-bottom: 1px solid #cccccc;
+}
+.reason{
+    margin: 50px 0;
+}
+textarea{
+    width: 100%;
+    height: 450px;
+    border:none;
+
+}
+.reason .textarea{
+    margin:0 20px;
+    border:1px solid #cccccc
+}
+
+button{
+    background-color: #FF8F00;
+    text-align: center;
+    height: 100px;
+    line-height: 80px;
+    color: white;
+    width: 50%;
+    border-radius: 50px;
+}
+.btn{
+    margin-top: 100px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+input, textarea{
+    font-size: 35px;
+}

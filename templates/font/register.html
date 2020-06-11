@@ -1,0 +1,64 @@
+{% extends "font/base.html" %}
+{% load static %}
+{% block meta %}
+    <meta name="viewport" content="width=device-width, initial-scale=1">{% endblock %}
+{% block css %}
+    <link href="{% static	'css/login.css' %}" rel="stylesheet" type="text/css"/>
+    <link href="{% static	'css/register.css' %}" rel="stylesheet" type="text/css"/>
+
+{% endblock %}
+{% block title %}注册{% endblock %}
+{% block bgc %}
+    style='background-image: url("{% static 'images/bg2.jpg' %}");background-size:cover;'
+{%endblock %}
+
+{% block content %}
+    <div class="wrap-form">
+        <form class="form-horizontal" role="form" id="loginForm">
+            {#    账号 #}
+            <div class="input-group">
+                <span class="input-group-addon">账号</span>
+                <input type="text" id="username" class="form-control" placeholder="请输入账号" aria-describedby="basic-addon1">
+            </div>
+
+            {#    密码 #}
+            <div class="input-group">
+                <span class="input-group-addon">密码</span>
+                <input type="password" id="password" class="form-control" placeholder="请输入密码"
+                       aria-describedby="basic-addon1">
+            </div>
+
+            <div class="input-group">
+                <span class="input-group-addon">确认密码</span>
+                <input type="password" id="password_again" class="form-control" placeholder="确认密码"
+                       aria-describedby="basic-addon1">
+            </div>
+
+            {#    验证码#}
+            <div class="input-group">
+                <input type="text" id="captcha" class="form-control" placeholder="请输入验证码"
+                       aria-describedby="basic-addon2">
+                <span class="input-group-addon" id="basic-addon2">发送验证码</span>
+            </div>
+
+            {#  警告#}
+            <div class="alert alert-danger" id="warning" style="display: none">
+                <a href="#" class="close" data-dismiss="alert">
+                    &times;
+                </a>
+                <strong>警告！</strong><span>您的网络连接有问题。</span>
+            </div>
+            {#  按钮#}
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="button" class="btn btn-default" id="register">注册</button>
+                </div>
+            </div>
+
+        </form>
+    </div>
+{% endblock %}
+
+{% block js %}
+    <script type="text/javascript" src="{% static	'js/register.js' %}"></script>
+{% endblock %}

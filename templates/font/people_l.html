@@ -1,0 +1,30 @@
+{% extends "font/base.html" %}
+{% load static %}
+{% block css %}
+    <link href="{% static	'css/del_people.css' %}" rel="stylesheet" type="text/css"/>{% endblock %}
+{% block title %}删除村民{% endblock %}
+
+{% block content %}
+
+    <div class="list">
+    {% for item in items %}
+    <div class="item">
+        <img src="{% static item.vatara  %}" width="100" height="100">
+        <div class="wrap-name">
+            <p>{{ item.name }}</p>
+            {% if item.gender == 1  %}
+                <p>男</p>
+            {% elif item.gender == 2 %}
+                <p>女</p>
+            {% else %}
+                <p>未知</p>
+            {% endif %}
+        </div>
+        <div class="del" myid="{{ item.myid }}"><p>选择</p></div>
+
+    </div>
+    {% endfor %}
+</div>
+
+
+{% endblock %}

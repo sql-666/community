@@ -1,0 +1,73 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    {% block meta %}{% endblock %}
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{% static	'css/general.css'	%}" rel="stylesheet" type="text/css"/>
+    {% block css %}{%endblock %}
+    <script type="text/javascript" src="{% static	'js/jquery-3.4.1.min.js'	%}"></script>
+    <script type="text/javascript" src="{% static	'js/func.js'	%}"></script>
+    {#boostrap4#}
+{#    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">#}
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+{#    <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>#}
+    <!-- bootstrap.bundle.min.js 用于弹窗、提示、下拉菜单，包含了 popper.min.js -->
+{#    <script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>#}
+    <!-- 最新的 Bootstrap4 核心 JavaScript 文件 -->
+{#    <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>#}
+    <title>{% block title %}首页{%endblock %}</title>
+</head>
+
+<body {% block bgc %}{%endblock %}>
+    <div id="page_title">{% block page_title %}{% endblock %}</div>
+    <div id="head">{% block head %}{% endblock %}</div>
+    <div id="content">
+        {% block content %}{% endblock %}
+
+    </div>
+    <div id="footer">
+        {% block footer %}{% endblock %}
+    </div>
+    <script type="text/javascript">
+        var u = "http://127.0.0.1:8000"
+        var index = u+"{% url 'index' %}"
+        var login = u+"{% url 'login' %}"
+        var zupu = u+"{% url 'user' %}"
+        var help_respects = u+"{% url 'help_respects' %}"
+        var respects_detail=u+"{% url 'respects_detail' %}"
+        var add_respect = "{% url 'add_respect' %}"
+        var volunteers=u+"{% url 'volunteers' %}"
+        var product = u+"{% url 'product' %}"
+        var user = u+"{% url 'user' %}"
+        var activity_d= u+"{% url 'activity_d' %}"
+        var product_d =u+"{% url 'product_d' %}"
+        var activity_more=u+"{% url 'activity_l' %}"
+        var edit_user_info = "{% url 'edit_user_info' %}"
+        var register="{% url 'register' %}"
+        var application = u+"{% url 'application' %}"
+        var confirm = u+"{% url 'confirm' %}"
+        var mycommunity = u+"{% url 'mycommunity' %}"
+        var create_community=u+"{% url 'create_community' %}"
+        var my_product = u+"{% url 'my_product' %}"
+        var edit_product = u+"{% url 'edit_product' %}"
+        var m_volunteer = u+"{% url 'm_volunteer' %}"
+        var add_activity_d = u+"{% url 'add_activity_d' %}"
+        var m_activity = u+"{% url 'm_activity' %}"
+        var people_l = u+"{% url 'people_l' %}"
+        var enter_community = u+"{% url 'enter_community' %}"
+        var phone_code = u+"{% url 'phone_code' %}"
+        var del_people = u+"{% url 'del_people' %}"
+    </script>
+    {% block script %}{%endblock %}
+    {% block js %}{%endblock %}
+    <script>
+        $("#toIndex").on('click', function () {
+            window.location.href=index
+        })
+
+    </script>
+</body>
+</html>

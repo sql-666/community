@@ -1,0 +1,45 @@
+{% extends "font/base.html" %}
+{% load static mytags %}
+{% block css %}
+    <link href="{% static	'css/user.css' %}" rel="stylesheet" type="text/css"/>{% endblock %}
+{% block title %}个人中心{% endblock %}
+
+{% block content %}
+    <div id="toIndex" style="position: fixed;bottom: 120px;right: 60px; background-color: white;">
+            <img src="{% static 'images/index.png' %}" width="120" height="120"
+                 style="opacity:0.5;">
+        </div>
+    <div class="head-bg">
+        <div class="wrap-name">
+            <img src="{% static 'images/smile.jpg' %}">
+            <div class="name">
+                <p>{{ user_info.name }}</p>
+                {% if user_info.gender == 1 %}
+                    <p>男</p>
+                {% elif user_info.gender == 2 %}
+                    <p>女<p>
+                 {% else %}
+                    <p>未知</p>
+                {% endif %}
+            </div>
+        </div>
+        {% if user_info.community_id %}
+            <div class="communityID"><p style="width: 100%;">社区邀请码:{{ in_code }}</p></div>
+        {% else %}
+            <div class="communityID"><p>暂未加入社区</p></div>
+        {% endif %}
+    </div>
+
+    <div class="list">
+        {% for item in funcList %}
+            <div class="item">
+                <p class="hide">{{ item.page_url }}</p>
+                <p>{{ item.title }}</p>
+            </div>
+        {% endfor %}
+
+    </div>
+{% endblock %}
+
+{% block js %}
+    <script type="text/javascript" src="{% static	'js/user.js' %}"></script>{% endblock %}

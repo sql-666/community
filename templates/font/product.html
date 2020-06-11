@@ -1,0 +1,76 @@
+{% extends "font/base.html" %}
+{% load static %}
+{% block css %}
+    <link href="{% static	'css/product.css' %}" rel="stylesheet" type="text/css"/>{% endblock %}
+{% block title %}赶集广场{% endblock %}
+
+{% block content %}
+    <div id="toIndex" style="border-radius: 50%;position: fixed;bottom: 120px;right: 60px; background-color: white;">
+            <img src="{% static 'images/index.png' %}" width="120" height="120"
+                 style="opacity:0.8;">
+        </div>
+
+    <!--搜索框-->
+    <form>
+        <div class="wrap-search" style="display: flex;">
+            <input style="font-size: 35px;padding: 0 20px;width: 85%"  >
+            <p style="font-size: 35px;padding: 0 10px;color: #fff;"  id="search">搜索</p>
+        </div>
+        <div class="type-head" now_type="{{ type }}">
+            <label class="wrap-type-name">
+                <input name="select_type" type="radio" value="all" class="radio"/>
+                <p>全部</p>
+            </label>
+            {% for item in type_list %}
+                <label class="wrap-type-name">
+                    <input name="select_type" type="radio" value="{{ item.tn }}" class="radio"/>
+                    <p>{{ item.type_name }}</p>
+                </label>
+            {% endfor %}
+            <div>
+                <img src="{% static 'icons/type.png' %}">
+            </div>
+        </div>
+    </form>
+
+    <!--商品-->
+    <div class="wrap-pro">
+        {% for item in products %}
+            <div class="pro">
+                <img class="proImg" value="{{ item.myid }}" src="{% static item.img.url %}">
+                <div class="description">
+                    <p class="bt">{{ item.title }}</p>
+                    <div class="wrap-price">
+                        <p>￥{{ item.price }}</p>
+                        <p>起卖价￥{{ item.start_price }}</p>
+                    </div>
+                    <div class="row1">
+                        <img class="icon1" src="{% static 'icons/address.png' %}">
+                        <p id="address">{{ item.community }}</p>
+{#                        {% if item.get_type == "1" %}#}
+{#                            <p>自提</p>#}
+{#                        {% elif item.get_type == "2" %}#}
+{#                            <p>送货上门</p>#}
+{#                        {% else %}#}
+{#                            <p>部分送货上门</p>#}
+{#                        {% endif %}#}
+                        <p>{{ item.get_type }}</p>
+
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
+
+{% block js %}
+    <script type="text/javascript" src="{% static	'js/product.js' %}"></script>
+    <script>
+    //搜索
+$("#search").on('click',function(){
+    var type = "all"
+    var con = $("input").val()
+    window.location.href = product+"?type="+type+"&page_id=1&con="+con;
+})
+    </script>
+{% endblock %}

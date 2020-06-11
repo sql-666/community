@@ -1,0 +1,36 @@
+{% extends "font/base.html" %}
+{% load static %}
+{% block css %}
+    <link href="{% static	'css/my_product.css' %}" rel="stylesheet" type="text/css"/>{% endblock %}
+{% block title %}添加老人{% endblock %}
+
+{% block content %}
+    <div class="list">
+        {% for item in my_proucts %}
+            <div class="item">
+                <img src="{% static item.img.url %}" width="200" height="180">
+                <div class="content" pro_id="{{ item.myid }}">
+                    <p>{{ item.title }}</p>
+                    <div class="price">
+                        <p>￥{{ item.price }}</p>
+                        <p>起卖价:￥{{ item.start_price }}</p>
+                    </div>
+                </div>
+                <div class="del" pro_id="{{ item.myid }}"><p >删除</p></div>
+            </div>
+
+        {% endfor %}
+        {% if not my_proucts %}
+            <p style="text-align: center">~~您未发布商品~~</p>
+        {% endif %}
+        <div id="add-img">
+            <img src="{% static 'icons/add-radio.png' %}" width="120" height="120"
+                 style="position: absolute;bottom: 150px;right: 80px;opacity:0.5;">
+        </div>
+
+    </div>
+{% endblock %}
+
+{% block js %}
+    <script type="text/javascript" src="{% static	'js/my_product.js' %}"></script>
+{% endblock %}

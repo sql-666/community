@@ -1,0 +1,45 @@
+.bt-item{
+    display: flex;
+
+}
+.bt-item p:first-child{
+    color:#616161
+}
+.head-bg{
+    width: 100%;
+    height: 500px;
+    background-color: #cccccc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.respect-name{
+    display: flex;
+    justify-content: space-between;
+}
+
+.bt-item p:first-child{
+    /*width: 100px;*/
+}
+
+.prove-btn{
+    width: 50%;
+    height: 100px;
+    /*background-color: darkorange;*/
+    color: white;
+    border-radius: 50px;
+    text-align: center;
+    line-height: 80px;
+}
+
+.wrap-btn{
+    position: fixed;
+    bottom: 0px;
+    display: flex;
+    justify-content: space-between;
+    width: 99%;
+    border-top: 1px solid #cccccc;
+    padding: 20px 0;
+    align-items: center;
+}

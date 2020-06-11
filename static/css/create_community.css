@@ -1,0 +1,6 @@
+.wrap .col-lg-6{
+    height: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}

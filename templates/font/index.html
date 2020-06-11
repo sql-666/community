@@ -1,0 +1,90 @@
+{% extends "font/base.html" %}
+{% load static %}
+{#{% block meta %}#}
+{#    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">#}
+{#{% endblock %}#}
+{% block css %}
+    <link href="{% static	'css/index.css' %}" rel="stylesheet" type="text/css"/>{% endblock %}
+{% block title %}首页{% endblock %}
+
+{% block content %}
+{#    <img src="{% static 'images/spellGroup.jpg' %}" class="img-fluid" alt="Responsive image">#}
+
+   <div class="head-bg">
+        <div class="wrap-user" id="login">
+            <img src="{% static 'images/community.jpg' %}" width="100%">
+        </div>
+    </div>
+      {% if user.community_id%}
+    <!--功能按钮-->
+    {% if  func%}
+    <div class="wrap-func">
+        {% for item in func %}
+            <div class="func-item" style="display: flex;flex-direction: column;justify-content: center;align-items: center">
+                <img src="{% static item.icon %}" width="120" height="120">
+                <p style="font-size:25px">{{ item.title }}</p>
+                <p class="hide">{{ item.viewUrl }}</p>
+            </div>
+        {% endfor %}
+
+    </div>
+    {% endif %}
+
+    <!--暖巢计划 -->
+    {% if activity %}
+
+    <div id="activity_more" class="more">
+        <p class="bt">暖巢计划</p>
+        <p class="bt">查看全部</p>
+    </div>
+    <div class="wrap-help">
+        <div class="activity" >
+            <p class="hide">{{ activity.myid }}</p>
+            <div class="help-img">
+                <img src="	{% static	activity.img %}" width="100%" height="350">
+            </div>
+            <div>
+                <p>{{ activity.title }}</p>
+                <p class="gray">{{ activity.description }}</p>
+            </div>
+
+        </div>
+
+    </div>
+    {% endif %}
+
+    {% if index_pro %}
+    <!--最浓家乡味-->
+    <div id="pro_more" class="more">
+        <p class="bt">最浓家乡味</p>
+        <p class="bt">查看全部</p>
+    </div>
+
+    <div class="wrap-homesick">
+        {% for item in index_pro %}
+            <div class="pro-item">
+                <p class="hide">{{ item.myid }}</p>
+                <img class="pro-img" src="{% static	item.img.url %}"></img>
+                <p style="height: 40px;overflow: hidden;">{{ item.title }}</p>
+                <div class="wrap-price">
+                    <p>价格:{{ item.price }}</p>
+                    <p>起卖价:{{ item.start_price }} </p>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+
+      {% else %}
+          <div style="display: flex;flex-direction: column;justify-content: center;align-items: center">
+              <img src="{% static 'icons/home.png' %}">
+              <p>未有社区，<a id="community">点击加入社区</a></p>
+          </div>
+      {% endif %}
+
+{% endblock %}
+
+{% block js %}
+    <script type="text/javascript" src="{% static	'js/index.js' %}"></script>
+{% endblock %}

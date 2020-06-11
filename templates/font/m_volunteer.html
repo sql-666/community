@@ -1,0 +1,60 @@
+{% extends "font/base.html" %}
+{% load static mytags %}
+{% block css %}
+    <link href="{% static	'css/m_volunteer.css' %}" rel="stylesheet" type="text/css"/>{% endblock %}
+{% block title %}管理志愿{% endblock %}
+
+{% block content %}
+<div class="list">
+    {% for item in items %}
+    <div class="item">
+        <img src="{% static item.vatara %}" width="100" height="100">
+        <div class="wrap-name">
+            <p>{{ item.name }}</p>
+            <p>{{ item.phone }}</p>
+        </div>
+        <div class="del" myid="{{ item.myid }}"><p>删除</p></div>
+
+    </div>
+    {% endfor %}
+</div>
+{% if flag == "leader" %}
+<div class="btn" flag="leader"><p style="line-height: 60px;">添加队长</p></div>
+{% else %}
+<div class="btn" flag="volunteer"><p style="line-height: 60px;">添加队员</p></div>
+{% endif %}
+{% endblock %}
+
+{% block js %}
+    <script>
+    $(".del").on('click', function () {
+        alert($(this).attr("myid"))
+        var data={
+            myid : $(this).attr("myid"),
+            flag:"volunteer"
+        }
+        $.ajax({
+        type: 'POST',
+        url: m_volunteer,
+        data: JSON.stringify(data),
+        dataType:"json",
+        contentType:"application/json;charset=utf-8",
+        success: function (res) {
+            if (res.code=="200") {//根据返回值进行跳转
+                window.location.href = m_volunteer;
+            }else{
+                alert("删除失败")
+            }
+        }
+    });
+    })
+
+{#    添加#}
+    $(".btn").on('click', function () {
+
+        var flag=$(this).attr("flag")
+        window.location.href = people_l+"?flag="+flag;
+    })
+    </script>
+
+{% endblock %}

@@ -1,0 +1,53 @@
+{% extends "font/base.html" %}
+{% load static %}
+{% block meta %}<meta name="viewport" content="width=device-width, initial-scale=1">{% endblock %}
+{% block css %}<link href="{% static	'css/login.css'	%}" rel="stylesheet" type="text/css"/>{% endblock %}
+{% block title %}登录{% endblock %}
+{% block bgc %}
+    style='background-image: url("{% static 'images/bg2.jpg' %}");background-size:cover;'
+{%endblock %}
+{% block content %}
+ <div class="wrap-form">
+<form class="form-horizontal" role="form" id="loginForm">
+  <div class="form-group">
+      <label for="firstname" class="col-sm-2 control-label" >账号</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="username" placeholder="请输入账号">
+    </div>
+  </div>
+  <div class="form-group">
+      <label for="lastname" class="col-sm-2 control-label">密码</label>
+    <div class="col-sm-10">
+      <input type="password" class="form-control" id="password" placeholder="请输入密码">
+    </div>
+  </div>
+
+   <div class="alert alert-danger" id="warning" style="display: none">
+        <a href="#" class="close" data-dismiss="alert">
+            &times;
+        </a>
+        <strong>错误！</strong>
+       <span>网络连接错误！</span>
+    </div>
+
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" id="rememberMe">请记住我
+        </label>
+        <a>点击注册</a>
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <button type="button" class="btn btn-default" id="login-btn">登录</button>
+    </div>
+  </div>
+
+</form>
+ </div>
+{% endblock %}
+
+{% block js %}<script type="text/javascript" src="{% static	'js/login.js'	%}"></script>{%endblock %}

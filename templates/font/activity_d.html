@@ -1,0 +1,90 @@
+{% extends "font/base.html" %}
+{% load static mytags %}
+{% block css %}<link href="{% static	'css/activity_d.css' %}" rel="stylesheet" type="text/css"/>{% endblock %}
+{% block title %}活动详情{% endblock %}
+
+{% block content %}
+    <div class="wrap">
+        <div class="bt"><b>{{ activityD.title }}</b></div>
+
+        <div>
+            <p>{{ activityD.description }}</p>
+        </div>
+        <div class="item">
+            <p>队长</p>
+            <p>{{ activityD.leader.name }}</p>
+        </div>
+
+        <div>
+            <div class="item">
+            <p>招录情况</p>
+            <p>{{ members | length}}/{{ activityD.need_number }}</p>
+
+                {% if members|length < activityD.need_number %}
+                <p>（未满）</p>
+                 {% else %}
+                    <p>（已满）</p>
+                {% endif %}
+
+            </div>
+            <div class="img-groups">
+                {% for item in members %}
+                    <img src="{% static item.user_info.vatara %} " width="60" height="60">
+                {% endfor %}
+            </div>
+    </div>
+    <div class="item">
+        <p>活动时间</p>
+        <p>{{ activityD.start_time |data_time }}~{{ activityD.end_time |data_time}}</p>
+    </div>
+
+    <div class="item">
+        <p id="deadline">报名截止时间</p>
+        <p>{{ activityD.deadline |data_time }}</p>
+    </div>
+
+    <div class="item-column">
+        <p>活动安排</p>
+        <p >{{ activityD.plan }}</p>
+    </div>
+{#    <div class="item-column">#}
+{#        <p>备注</p>#}
+{#        <p>{{ activityD.note }}</p>#}
+{#    </div>#}
+
+
+
+</div>
+
+    {% if activityD.stati == 1 and nojoin%}
+        <div class="btn" activity_id="{{ activityD.myid }}">
+            <p style="line-height: 70px;color: white">加入活动</p>
+        </div>
+    {% endif %}
+
+{% endblock %}
+
+{% block js %}
+    <script>
+
+        $(".btn").on('click', function(){
+            var activity_id = $(".btn").attr("activity_id")
+
+        $.ajax({
+            type: 'GET',
+            url: activity_d+"?type=join&activity_id="+activity_id,
+            dataType:"json",
+            contentType:"application/json;charset=utf-8",
+            success: function (res) {
+                if (res.code=="200") {//根据返回值进行跳转
+                    window.location.href = activity_d+"?activity_id="+activity_id;
+                }else{
+                    alert("服务繁忙，请稍后提交！")
+                }
+            }
+        });
+        })
+
+    </script>
+
+{%endblock %}

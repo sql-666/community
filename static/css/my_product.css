@@ -1,0 +1,37 @@
+body{
+    background-color: #fafafa;
+}
+.item{
+    padding: 30px 20px 30px 50px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    background-color: white;
+}
+
+
+.price{
+    display: flex;
+}
+
+.price p{
+    width: 250px;
+}
+
+.content{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 180px;
+    width: 70%;
+}
+
+.del{
+    color: #BF360C;
+    width: 130px;
+    text-align: center;
+    border:1px solid #BF360C;
+    padding: 10px;
+    border-radius: 20px;
+}

@@ -1,0 +1,10 @@
+.more{
+    display: flex;
+    border-bottom: 1px solid #fafafa;
+    justify-content: space-between;
+
+}
+
+.con{
+    padding: 0px 10px;
+}
