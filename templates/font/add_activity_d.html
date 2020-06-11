@@ -1,0 +1,99 @@
+{% extends "font/base.html" %}
+{% load static %}
+{% block css %}
+
+    <link href="{% static	'css/volunteer_d.css'	%}" rel="stylesheet" type="text/css"/>
+    <link href="{% static	'css/add_activity_d.css'	%}" rel="stylesheet" type="text/css"/>
+{% endblock %}
+{% block title %}填写志愿活动信息{% endblock %}
+
+{% block content %}
+<div class="wrap" class="item">
+    <div class="item">
+        <p>标题</p>
+        <input id = "title" value="">
+    </div>
+    <div class="item">
+        <p>描述</p>
+        <input id = "description" value="">
+    </div>
+
+    <div>
+        <div class="item">
+        <p>招录人数</p>
+        <input id = "need_people" value="">
+        </div>
+
+        <div class="img-groups">
+            {% for item in imgs %}
+            <img src="{% static 'images/smile.jpg' %} " width="60" height="60">
+            {% endfor %}
+        </div>
+    </div>
+    <div class="item">
+        <p>开始时间</p>
+        <input id = "start_time" value="">
+    </div>
+   <div class="item">
+        <p>结束时间</p>
+        <input id = "end_time" value="">
+    </div>
+
+    <div class="item">
+        <p class="deadline">截止时间</p>
+        <input id="deadline" value="">
+    </div>
+
+    <div class="item-column">
+        <p>活动安排</p>
+        <textarea id="plan"></textarea>
+    </div>
+{#    <div class="item-column">#}
+{#        <p>备注</p>#}
+{#        <textarea id="note"></textarea>#}
+{#    </div>#}
+
+
+
+</div>
+
+<div class="btn" type="{{ type }}">
+    <p>完成</p>
+</div>
+{% endblock %}
+
+{%block js %}
+    <script>
+        $(".btn").on('click', function () {
+            var data={
+                title:$("#title").val(),
+                description:$("#description").val(),
+                need_people:$("#need_people").val(),
+                start_time:$("#start_time").val(),
+                deadline:$("#deadline").val(),
+                plan:$("#plan").val(),
+{#                note:$("#note").val(),#}
+                end_time:$("#end_time").val(),
+                type:"new"
+            }
+            $.ajax({
+        type: 'POST',
+        url: add_activity_d,
+        data: JSON.stringify(data),
+        dataType: "json",
+        contentType: "application/json;charset=utf-8",
+        success: function (res) {
+            if (res.code == "200") {//根据返回值进行跳转
+                window.location.href = m_activity;
+            } else{
+                alert("添加失败")
+            }
+        }
+    })
+
+        })
+
+
+    </script>
+
+{% endblock %}

@@ -1,0 +1,85 @@
+{% extends "font/base.html" %}
+{% load static mytags %}
+{% block meta %}
+    <meta name="viewport" content="width=device-width, initial-scale=1">{% endblock %}
+{% block css %}
+    <link href="{% static	'css/volunteers.css' %}" rel="stylesheet" type="text/css"/>{% endblock %}
+{% block title %}志愿活动{% endblock %}
+
+{% block content %}
+    <div id="toIndex" style="position: fixed;bottom: 50px;right: 20px;">
+            <img src="{% static 'images/index.png' %}"
+                 style="opacity:0.5;width: 50px;height: 50px">
+        </div>
+    <img src="{% static 'images/volunteer_banner.png' %}" width="100%" height="250" style="margin-bottom: 10px">
+    <div class="wrap">
+
+        <ul class="nav nav-tabs" style="background-color:white" id="nav">
+            <p class="hide">{{ type }}</p>
+            <li role="presentation" click_type="all"><a href="#">全部</a></li>
+            <li role="presentation" click_type="active"><a href="#">正在招募</a></li>
+            <li role="presentation" click_type="deadline"><a href="#">截止报名</a></li>
+            <li role="presentation" click_type="end"><a href="#">结束活动</a></li>
+        </ul>
+        <!--找人活动-->
+        <div class="activity-head"><h5 style="padding: 0 15px;">页数{{ page_id }}/{{ totle_page }}</h5></div>
+        {% if  "{{ activities|length }}" != "0" %}
+            <div class="wrap-list">
+                {% for item in  activities %}
+                    <div class="activity-item">
+                        <p class="hide">{{ item.myid }}</p>
+                        <div>
+                            <h5>活动名称:{{ item.title }}</h5>
+                        </div>
+                        <div class="publish-name">
+                            <div class="item">
+                                <h5>队长:</h5>
+                                <h5>{{ item.leader.user_info.name }}</h5>
+                            </div>
+                            <div class="item">
+                                <h5>服务社区:</h5>
+                                <h5>{{ item.community.name }}</h5>
+                            </div>
+
+                        </div>
+                        <div class="item">
+                            <h5>需求人数:</h5>
+                            <h5>{{ item.members | length}}/{{ item.need_number }}</h5>
+                        </div>
+                        <div class="item">
+                            <h5>活动时间:</h5>
+                            <h5>{{ item.start_time |data_time }}-{{ item.end_time |data_time }}</h5>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+
+            {##}
+            {#            <div style="background-color: white;margin-top: -10px;">#}
+            {#                <h5 class="more">查看更多></h5>#}
+            {#            </div>#}
+        {% endif %}
+    </div>
+    {#    <div class="btn">#}
+    {#        <p>成为志愿者</p>#}
+    {#    </div>#}
+{#    {% if  "{{ activities|length }}" > "10" %}#}
+{#    <div class="nav-page" page_id="{{ page_id }}">#}
+{#        <nav aria-label="...">#}
+{#            <ul class="pager" style="margin: 0">#}
+{#                <li  name="first"><a href="#">首页</a></li>#}
+{#                <li><a href="#" name="pre">上一页</a></li>#}
+{#                <li><a href="#" name="next">下一页</a></li>#}
+{#                <li><a href="#" name="last">尾页</a></li>#}
+{#            </ul>#}
+{#        </nav>#}
+{#    </div>#}
+{#    {% endif %}#}
+    {% if btn %}
+        <button type="button" class="btn btn-primary btn-lg btn-block" style="font-size: 13px;">成为志愿者</button>
+    {% endif %}
+{% endblock %}
+
+{% block js %}
+    <script type="text/javascript" src="{% static	'js/volunteers.js' %}"></script>
+{% endblock %}

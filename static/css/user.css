@@ -1,0 +1,36 @@
+.head-bg{
+    background-color: #eaeaea;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.communityID{
+    margin-top: 120px;
+    /*margin-left: 120px;*/
+    color:#757575;
+}
+.head-bg img{
+    width: 200px;
+    height: 200px;
+    border-radius: 20px;
+    border:1px solid #cccccc;
+    margin: 20px;
+}
+.head-bg{
+    padding: 50px;
+}
+
+.wrap-name{
+    display: flex;
+    align-items: center;
+    width: 500px;
+}
+
+.item{
+    border-bottom: 1px solid #cccccc;
+    padding: 20px 10px;
+}
+
+.list{
+}

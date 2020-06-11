@@ -1,0 +1,35 @@
+{% extends "font/base.html" %}
+{% load static mytags %}
+{% block css %}
+
+    <link href="{% static	'css/volunteer_d.css'	%}" rel="stylesheet" type="text/css"/>
+{#    <link href="{% static	'css/m_activity.css'	%}" rel="stylesheet" type="text/css"/>#}
+{% endblock %}
+{% block title %}管理活动{% endblock %}
+
+{% block content %}
+     <div class="wrap-add" style="padding:0 30px;height: 200px;display: flex;align-items: center;background-color: white;border-bottom: 10px solid #fafafa">
+{#            <div class="add-btn"></div>#}
+            <img src="{% static 'icons/add.png' %}" width="150" height="150" style="margin: 10px">
+            <p>可发布志愿活动，招募志愿者</p>
+     </div>
+<div class="list">
+    {% for item in activities %}
+    <div class="item">
+        <div><p class="bt">{{ item.title }}</p></div>
+        <div class="community"><p>社区:{{ item.community.name }}</p><p>队长:{{ item.leader.name }}</p></div>
+{#        <div><p>慰问老人（10）</p></div>#}
+{#        <div><p>黎翠花，梁建国，黄梅，梁建康，梁建安，梁邦国...</p></div>#}
+        <div><p class="time">活动时间：{{ item.start_time|data_time }}~{{ item.end_time|data_time }}</p></div>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}
+{% block js %}
+    <script>
+        $(".wrap-add").on('click', function () {
+            window.location.href = add_activity_d+"?type=new";
+        })
+    </script>
+{% endblock %}

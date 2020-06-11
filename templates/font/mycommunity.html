@@ -1,0 +1,79 @@
+{% extends "font/base.html" %}
+{% load static %}
+
+{% block meta %}
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+{% endblock %}
+{% block css %}
+    <link href="{% static	'css/mycommunity.css' %}" rel="stylesheet" type="text/css"/>{% endblock %}
+{% block title %}我的社区{% endblock %}
+
+{% block content %}
+     <div id="toIndex" style="position: fixed;bottom: 20px;right: 20px;">
+            <img src="{% static 'images/index.png' %}"
+                 style="opacity:0.5;width: 60px;height: 60px">
+        </div>
+    {#    {{ mycommunity.name }}#}
+    <div id="demo" class="carousel slide" data-ride="carousel">
+        <!-- 指示符 -->
+        <ul class="carousel-indicators">
+            <li data-target="#demo" data-slide-to="0" class="active"></li>
+            <li data-target="#demo" data-slide-to="1"></li>
+            <li data-target="#demo" data-slide-to="2"></li>
+        </ul>
+        <!-- 轮播图片 -->
+        <div class="carousel-inner" style="height: 150px">
+            <div class="carousel-item active">
+                <img src="https://static.runoob.com/images/mix/img_fjords_wide.jpg" style="width: 100%">
+            </div>
+            <div class="carousel-item" style="height: 150px">
+                <img src="https://static.runoob.com/images/mix/img_nature_wide.jpg" style="width: 100%">
+            </div>
+            <div class="carousel-item" style="height: 150px">
+                <img src="https://static.runoob.com/images/mix/img_mountains_wide.jpg" style="width: 100%">
+            </div>
+        </div>
+
+        <!-- 左右切换按钮 -->
+        <a class="carousel-control-prev" href="#demo" data-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </a>
+        <a class="carousel-control-next" href="#demo" data-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </a>
+
+    </div>
+    <div class="con">
+        <h5>{{ mycommunity.name }}</h5>
+        <h6>管理员:{{ mycommunity.administrator.name }}</h6>
+        <h6>邀请码:{{ mycommunity.in_code }}</h6>
+        <h6>创建时间:{{ mycommunity.create_time }}</h6>
+        <div class="more">
+            <h9 class="bt">社区成员({{ people|length }})</h9>
+            <h9 class="bt">查看全部</h9>
+        </div>
+
+        <div>
+            {% for item in people %}
+                <div style="display: flex;justify-content: space-between;align-items: center;padding:5px 20px;border-bottom: 1px solid #fafafa">
+                    <h9>{{ forloop.counter }}</h9>
+                    <img src="{% static item.vatara %}" alt="" width="50" height="50"
+                         style="border-radius: 50%;border: 1px solid #fafafa">
+                    <h9>{{ item.name }}</h9>
+                    {% if item.gender == 1 %}
+                        <h9 style="width: 30px">男</h9>
+                    {% elif item.gender == 2 %}
+                        <h9 style="width: 30px">女</h9>
+                    {% else %}
+                        <h9 style="width: 30px">未知</h9>
+                    {% endif %}
+
+                </div>
+
+            {% endfor %}
+        </div>
+
+    </div>
+
+
+{% endblock %}

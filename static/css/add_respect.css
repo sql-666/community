@@ -1,0 +1,40 @@
+.add-item{
+    display: flex;
+    margin: 10px 0;
+}
+
+.add-item p{
+    width: 150px;
+    margin: 20px 0;
+}
+
+.add-item input{
+    width: 80%;
+    border: none;
+   border-bottom: 1px solid #cccccc;
+}
+
+.add-item textarea{
+    width: 75%;
+    height: 350px;
+    border-color: #cccccc;
+    margin-top: 30px;
+}
+
+
+.btn{
+    width: 100%;
+    height: 100px;
+    text-align: center;
+    border: 1px solid #cccccc;
+    background-color: #FF8F00;
+    color: white;
+    line-height: 80px;
+    position: fixed;
+    margin-top: 100px;
+    bottom: 0;
+}
+
+input{
+    font-size: 35px;
+}

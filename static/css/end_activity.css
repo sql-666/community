@@ -1,0 +1,32 @@
+.item{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.item img{
+    border: 1px solid #cccccc;
+}
+
+.item textarea{
+    max-height: 350px;
+    min-height: 250px;
+    border: none;
+    border: 1px solid #cccccc;
+}
+.wrap-btn{
+    display: flex;
+    justify-content: center;
+    padding: 20px 50px;
+}
+.btn{
+    width: 50%;
+    height: 100px;
+    text-align: center;
+    border: 1px solid #cccccc;
+    background-color: #FF8F00;
+    color: white;
+    line-height: 80px;
+    margin-top: 100px;
+    border-radius: 50px;
+}

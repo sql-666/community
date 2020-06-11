@@ -1,0 +1,61 @@
+.img{
+    max-height: 1200px;
+}
+
+.item{
+    display: flex;
+}
+
+.item p:first-child{
+   width: 100px;
+    color: #757575;
+}
+
+.note p:first-child{
+   width: 150px;
+    color: #757575;
+}
+
+.note{
+    /*border: 1px solid #cccccc;*/
+    max-height: 300px;
+}
+
+#price{
+    color: #BF360C;
+    font-size: 45px;
+}
+
+#gray{
+    color: #757575;
+    font-size: 30px;
+}
+
+.wrap-price{
+    display: flex;
+    align-items: center;
+}
+
+#contect{
+    width: 150px;
+}
+
+#floor-price{
+    width: 120px;
+}
+
+.kucun{
+    display: flex;
+}
+
+.kucun .item:first-child{
+    width: 550px;
+}
+
+.product-bt{
+    width: 100%;
+    text-align: center;
+}
+.productD img{
+    max-height: 1200px;
+}

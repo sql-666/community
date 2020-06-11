@@ -1,0 +1,78 @@
+{% extends "font/base.html" %}
+{% load static %}
+{% block css %}
+    <link href="{% static	'css/add_respect.css' %}" rel="stylesheet" type="text/css"/>
+    <link href="{% static	'css/edit_product.css' %}" rel="stylesheet" type="text/css"/>
+{% endblock %}
+{% block title %}发布商品{% endblock %}
+
+{% block content %}
+    <form action="" method="post">
+        <div class="wrap" mytype="{{ type }}" pro_id="{{ product.myid }}">
+            <div class="alert alert-danger" id="warning" style="display: none">
+                <a href="#" class="close" data-dismiss="alert">
+                    &times;
+                </a>
+                <strong style="font-size: 33px;">警告！</strong><span style="font-size: 33px;">网络连接错误！</span>
+            </div>
+
+            <div class="add-item">
+                <p style="width: 300px; ">主图（最多2张）</p>
+                <div style="border:1px solid #cccccc;width: 200px;height: 90px;display: flex;justify-content: center">
+                    <p>选择图片</p></div>
+            </div>
+            <div class="add-item">
+                <p style="width: 300px;">详情图（最多3长）</p>
+                <div style="border:1px solid #cccccc;width: 200px;height: 90px;display: flex;justify-content: center">
+                    <p>选择图片</p></div>
+            </div>
+
+            <div class="add-item">
+                <p>标题</p>
+                <input type="text" id="title" value={{ product.title }}>
+            </div>
+
+            <div class="add-item">
+                <p>价格</p>
+                <input type="text" id="price" value={{ product.price }}>
+            </div>
+            <div class="add-item">
+                <p>总量</p>
+                <input type="text" id="inventory" value={{ product.inventory }}>
+            </div>
+            <div class="add-item">
+                <p>单位</p>
+                <input type="text" id="unit" value={{ product.unit }}>
+            </div>
+            <div class="add-item">
+                <p>起卖价格</p>
+                <input type="text" id="start_price" value={{ product.start_price }}>
+            </div>
+            <div class="add-item">
+                <p>类型</p>
+                <input type="text" id="type" value={{ product.type }}>
+            </div>
+            <div class="add-item">
+                <p>电话号码</p>
+                <input type="text" id="phone" value={{ product.phone }}>
+            </div>
+
+            <div class="add-item">
+                <p>拿货方式</p>
+                <input type="text" id="get_type" value={{ product.get_type }}>
+            </div>
+
+            <div class="add-item">
+                <p>备注</p>
+                <textarea id="note" style="font-size: 35px">{{ product.note }}</textarea>
+            </div>
+
+
+        </div>
+        <div class="btn" style="background-color: orange;color: white;line-height: 80px;"><p>完成</p></div>
+    </form>
+{% endblock %}
+
+{% block js %}
+    <script type="text/javascript" src="{% static	'js/edit_product.js' %}"></script>
+{% endblock %}

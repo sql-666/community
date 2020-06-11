@@ -1,0 +1,46 @@
+.wrap-name{
+    display: flex;
+    width: 70%;
+}
+
+.wrap-name p{
+    width: 150px;
+}
+
+.item{
+    display: flex;
+    background-color: white;
+    padding: 30px 50px;
+    align-items: center;
+    margin-bottom: 10px;
+
+}
+
+.list img{
+    border-radius: 50%;
+    border:1px solid #cccccc;
+    margin-right: 30px;
+
+}
+
+body{
+    background-color: #fafafa;
+}
+
+.del{
+    width: 150px;
+    text-align: center;
+}
+
+.btn{
+    width: 100%;
+    height: 100px;
+    text-align: center;
+    border: 1px solid #cccccc;
+    background-color: #FF8F00;
+    color: white;
+    line-height: 80px;
+    position: fixed;
+    margin-top: 100px;
+    bottom: 0;
+}

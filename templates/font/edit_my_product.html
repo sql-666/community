@@ -1,0 +1,72 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>活动详情</title>
+    <link href="{% static	'css/general.css'	%}" rel="stylesheet" type="text/css"/>
+    <link href="{% static	'css/edit_my_product.css' %}" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div class="item">
+        <p>主图</p>
+    </div>
+<div class="wrap-img">
+    {% for item in imgs %}
+    <img src="{% static 'images/chicken.jpg' %}" width="200px" height="200">
+    {% endfor %}
+    <img width="200px" height="200" id="add">
+</div>
+
+<div class="item">
+    <p>类别</p>
+    <select>
+        <option value ="volvo" selected><p>肉类</p></option>
+        <option value ="saab"><p>蔬菜</p></option>
+        <option value="opel"><p>水果</p></option>
+    </select>
+
+
+</div>
+<div class="item">
+        <p>标题</p>
+        <input>
+    </div>
+
+<div class="wrap-price">
+    <div class="item">
+        <p>价格</p>
+        <input>
+    </div>
+    <div class="item">
+        <p>单位</p>
+        <input>
+    </div>
+</div>
+
+<div class="item">
+        <p>起卖价</p>
+        <input>
+</div>
+<div class="item">
+        <p>库存</p>
+        <input>
+</div>
+
+<div class="item">
+        <p id="pbone">联系电话</p>
+        <input>
+</div>
+
+<div class="note">
+        <p>说明备注</p>
+        <textarea></textarea>
+</div>
+
+<div class="btn">
+    <p>完成</p>
+</div>
+
+
+</body>
+</html>

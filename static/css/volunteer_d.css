@@ -1,0 +1,36 @@
+body{
+    background-color: #fafafa;
+
+}
+.item{
+    padding: 20px 50px;
+    background-color: white;
+    margin-bottom: 20px;
+
+}
+
+.bt{
+    font-size: 45px;
+}
+
+.community{
+    display: flex;
+
+
+}
+
+.community p{
+    width: 350px;
+    color: #616161;
+}
+
+.time{
+    color: #616161;
+}
+
+.stati{
+    color: red;
+}
+
+
+

@@ -1,0 +1,45 @@
+.add-btn{
+    border:1px solid #cccccc;
+    width: 200px;
+    height: 160px
+}
+
+.info{
+    display: flex;
+    width: 80%;
+    flex-direction: column;
+}
+
+.info p{
+    width: 100%;
+}
+
+.item{
+    display: flex;
+    background-color: white;
+    padding: 30px 50px;
+    align-items: center;
+    margin-bottom: 10px;
+
+}
+.info p:last-child{
+    color: #cccccc;
+}
+
+body{
+    background-color: #fafafa;
+}
+
+.stati{
+    width: 150px;
+    text-align: center;
+}
+
+.wrap-add{
+    height: 200px;
+    display: flex;
+    align-items: center;
+    padding:20px 30px;
+    background-color: white;
+    margin-bottom: 10px;
+}

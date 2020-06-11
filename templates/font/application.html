@@ -1,0 +1,42 @@
+{% extends "font/base.html" %}
+{% load static %}
+{% block css %}<link href="{% static	'css/application.css'	%}" rel="stylesheet" type="text/css"/>{% endblock %}
+{% block title %}成为志愿者{% endblock %}
+
+{% block content %}
+
+    <div class="head">
+        <img src="{% static user_info.vatara %}">
+        <p>{{ user_info.name }}</p>
+</div>
+<form>
+<div class="wrap">
+
+
+    <div class="content">
+
+        <div class="item">
+            <p>特长</p>
+            <input name="speciality" id="spe" >
+        </div>
+        <div class="reason">
+            <p>申请理由</p>
+            <div class="textarea"><textarea id="reason"></textarea></div>
+
+        </div>
+
+    </div>
+
+    <div class="btn" id="submit" >
+            <button><p>提交</p></button>
+
+    </div>
+
+</div>
+
+
+    </form>
+
+{% endblock %}
+
+{% block js %}<script type="text/javascript" src="{% static	'js/application.js'	%}"></script>{%endblock %}

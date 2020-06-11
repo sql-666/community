@@ -1,0 +1,50 @@
+.wrap-name{
+    display: flex;
+    width: 100%;
+}
+
+.wrap-name p{
+    width: 150px;
+}
+
+.item{
+    display: flex;
+    background-color: white;
+    padding: 30px 50px;
+    align-items: center;
+    margin-bottom: 10px;
+
+}
+
+.list img{
+    border-radius: 50%;
+    border:1px solid #cccccc;
+    margin-right: 30px;
+
+}
+
+body{
+    background-color: #fafafa;
+}
+
+.passed{
+    display: flex;
+    width: 40%;
+    justify-content: space-between;
+}
+
+
+.passed div{
+    width: 150px;
+    text-align: center;
+    border: 1px solid #cccccc;
+}
+.wrap-message{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+
+.pass{
+    color: red
+}

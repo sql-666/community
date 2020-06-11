@@ -1,0 +1,96 @@
+{% extends "font/base.html" %}
+{% load static %}
+{#{% block meta %}<meta name="viewport" content="width=device-width, initial-scale=1">{% endblock %}#}
+{% block css %}
+    <link href="{% static	'css/help_respects.css' %}" rel="stylesheet" type="text/css"/>{% endblock %}
+{% block title %}暖巢计划{% endblock %}
+
+{% block content %}
+     <div id="toIndex" style="position: fixed;bottom: 120px;right: 80px;">
+            <img src="{% static 'images/index.png' %}" width="140" height="140"
+                 style="opacity:0.5;">
+        </div>
+    <!-- 添加-->
+    <div class="wrap">
+     {% if po %}
+        <div class="wrap-btn">
+{#            <div class="add-btn"></div>#}
+            <img src="{% static 'icons/add.png' %}" class="add-btn">
+            <p>上报老人信息，可以获得志愿者的关爱、或相关的补贴</p>
+        </div>
+    {% endif %}
+
+        <div><p>已上报{{ respects|length }}位老人</p></div>
+
+
+        <!-- 列表-->
+        <div class="wrap-list">
+            {% for item in respects %}
+                <div class="respect-item">
+                    <p class="hide">{{ item.myid }}</p>
+                    <div class="wrap-img"><img src="{% static item.avatar %}" height="180" width='100%'></img>
+                    </div>
+                    <div class="info">
+                        <div class="user-name">
+                            <div><p id="respect-name">姓名:{{ item.name }}</p></div>
+                            <div style="display: flex">
+
+                                <p>性别:
+                                    {% if item.gender == 1 %}
+                                        男
+                                {% elif item.gender == 2 %}
+                                        女
+                                {% else %}
+                                        未知
+                                {% endif %}
+                                </p>
+                                <p>年龄:{{ item.age }}岁</p>
+                            </div>
+                        </div>
+                        <div><p>居住状况:{{ item.live_situation }}</p></div>
+                        <div><p>所在社区:{{ item.community.name }}</p></div>
+                    </div>
+
+
+                </div>
+            {% endfor %}
+        </div>
+
+        <div class="nav-page">
+{#                        <nav aria-label="Page navigation">#}
+{#                            <ul class="pagination pagination-lg">#}
+{#                                <li>#}
+{#                                    <a href="#" aria-label="Previous">#}
+{#                                        <span aria-hidden="true">&laquo;</span>#}
+{#                                    </a>#}
+{#                                </li>#}
+{#                                <li class="active"><a href="#">1</a></li>#}
+{#                                <li><a href="#">2</a></li>#}
+{#                                <li><a href="#">3</a></li>#}
+{#                                <li><a href="#">4</a></li>#}
+{#                                <li><a href="#">5</a></li>#}
+{#                                <li>#}
+{#                                    <a href="#" aria-label="Next">#}
+{#                                        <span aria-hidden="true">&raquo;</span>#}
+{#                                    </a>#}
+{#                                </li>#}
+{#                            </ul>#}
+{#                        </nav>#}
+{#            <nav aria-label="...">#}
+{#                <ul class="pager">#}
+{#                    <li class="active" ><a  href="#">首页</a></li>#}
+{#                    <li><a href="#">上一页</a></li>#}
+{#                    <li><a href="#">下一页</a></li>#}
+{#                    <li><a href="#">尾页</a></li>#}
+{#                </ul>#}
+{#            </nav>#}
+        </div>
+
+
+    </div>
+
+{% endblock %}
+
+{% block js %}
+    <script type="text/javascript" src="{% static	'js/help_respects.js' %}"></script>{% endblock %}
+

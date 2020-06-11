@@ -1,0 +1,40 @@
+{% extends "font/base.html" %}
+{% load static mytags %}
+{% block css %}
+    <link href="{% static	'css/volunteer_d.css' %}" rel="stylesheet" type="text/css"/>{% endblock %}
+{% block title %}志愿记录{% endblock %}
+
+{% block content %}
+    <div class="list">
+    {% if items %}
+    {% for item in items %}
+    <div class="item">
+        <div style="display: flex;flex-direction: row;align-items: center;justify-content: space-between">
+            <p class="bt">{{ item.d.activity.title }}</p>
+            {% if item.d.activity.stati == 1%}
+                <p class="stati">招募中</p>
+            {% elif item.d.activity.stati == 2%}
+                <p class="stati">截止报名</p>
+            {% elif item.d.activity.stati == 3%}
+                <p class="stati">活动结束</p>
+            {% endif %}
+
+
+        </div>
+        <div class="community"><p>社区:{{ item.d.activity.community.name }}</p><p>队长:{{ item.d.activity.leader.user_info.name }}</p></div>
+{#        <div><p>慰问老人（{{ item.respects|length }}）</p></div>#}
+        <div><p>
+            {% for item in item.respects %}
+                {{ item.respect.name }},
+            {% endfor %}
+        </p></div>
+        <div><p class="time">活动时间：{{ item.d.activity.start_time |data_time }}~{{ item.d.activity.end_time |data_time }}</p></div>
+    </div>
+    {% endfor %}
+     {% else  %}
+        <p style="text-align: center;margin-top: 100px;">~~没有志愿记录~~</p>
+    {% endif %}
+
+</div>
+
+{% endblock %}

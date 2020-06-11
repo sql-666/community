@@ -1,0 +1,34 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>添加志愿活动</title>
+     <link href="{% static	'css/general.css'	%}" rel="stylesheet" type="text/css"/>
+    <link href="{% static	'css/add_vol_activity.css' %}" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+
+<div class="wrap-add">
+    <div class="add-btn"></div>
+    <p>xxxxxxxxxxxxxxxxxxxxxxxxx</p>
+</div>
+
+
+<div class="list">
+    {% for item in items %}
+    <div class="item">
+        <div class="info">
+            <p>标题标题</p>
+            <p>2020/3/26 18:42 - 2020/3/26 18:42</p>
+        </div>
+        <div class="stati"><p>已结束</p></div>
+
+    </div>
+    {% endfor %}
+</div>
+
+
+
+</body>
+</html>
